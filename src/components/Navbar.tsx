@@ -17,11 +17,13 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container mx-auto flex items-center justify-between py-3 px-4">
-        <a href="#home" className="flex items-center gap-3">
-          <img src={logo} alt="Danphe Healing" className="h-12 w-12 rounded-full object-cover" />
+        <a href="#home" className="flex items-center gap-4">
+          <div className="rounded-full bg-background/90 p-1.5 shadow-card ring-1 ring-lavender-deep/40">
+            <img src={logo} alt="Danphe Healing" className="h-14 w-14 rounded-full object-cover" />
+          </div>
           <div>
-            <span className="font-heading text-xl font-semibold text-foreground">Danphe Healing</span>
-            <p className="text-xs text-muted-foreground italic">Rooted with Himalayan Love</p>
+            <span className="font-heading text-2xl font-semibold text-foreground leading-none">Danphe Healing</span>
+            <p className="text-sm text-muted-foreground italic mt-1">Rooted with Himalayan Love</p>
           </div>
         </a>
 
