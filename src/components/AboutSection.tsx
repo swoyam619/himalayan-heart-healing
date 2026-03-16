@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import portrait from "@/assets/vandana-portrait.jpg";
+import portrait from "@/assets/vandana-real.jpg";
 
 const AboutSection = () => (
   <section id="about" className="py-24 bg-background">
@@ -11,8 +11,8 @@ const AboutSection = () => (
           viewport={{ once: true }}
           className="relative"
         >
-          <div className="rounded-2xl overflow-hidden shadow-healing">
-            <img src={portrait} alt="Vandana Bhattarai - Energy Therapist" className="w-full h-auto object-cover" />
+          <div className="rounded-[2rem] overflow-hidden shadow-healing bg-card p-3 max-w-md mx-auto lg:max-w-none">
+            <img src={portrait} alt="Vandana Bhattarai - Energy Therapist" className="w-full h-[560px] object-cover object-center rounded-[1.5rem]" />
           </div>
           <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-lavender opacity-50 animate-glow -z-10" />
         </motion.div>
