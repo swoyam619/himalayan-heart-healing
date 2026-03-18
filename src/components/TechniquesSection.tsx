@@ -3,100 +3,86 @@ import { motion } from "framer-motion";
 const techniques = [
   {
     title: "Inner Child Therapy",
-    description:
-      "Supports you in reconnecting with younger parts of yourself that may still hold fear, rejection, abandonment, or unmet emotional needs. This work helps bring understanding, softness, and reparenting to old wounds.",
+    description: "Going back — gently — to the moments where you first learned to hide, perform, or disconnect. Not to relive pain, but to offer your younger self the safety and understanding they didn't receive.",
   },
   {
     title: "Shadow Therapy",
-    description:
-      "Helps bring hidden emotional patterns into awareness — the parts of you that were suppressed, shamed, or pushed aside. By compassionately meeting these parts, healing and integration become possible.",
+    description: "The parts of you that were shamed, denied, or pushed underground don't disappear. They run your life from the shadows. This work brings them into the light — not to fix them, but to welcome them home.",
   },
   {
     title: "Theta Healing",
-    description:
-      "Works at a deeper energetic and subconscious level to shift beliefs, emotional imprints, and inner blocks that may be affecting how you feel, relate, and respond to life.",
+    description: "Working at the subconscious level to shift beliefs and emotional imprints that your conscious mind can't seem to reach. The kind of patterns that make you say, 'I know this isn't rational, but I can't stop feeling it.'",
   },
   {
-    title: "EFT (Emotional Freedom Technique)",
-    description:
-      "A gentle tapping-based practice that can help calm the nervous system, release emotional intensity, and reduce the charge around painful memories, fears, or repeating triggers.",
+    title: "EFT — Emotional Freedom Technique",
+    description: "A body-based practice that uses gentle tapping to calm your nervous system and soften the emotional charge around memories, fears, and triggers. Simple, but often surprisingly powerful.",
   },
   {
     title: "Ho'oponopono",
-    description:
-      "A restorative forgiveness and release practice that supports emotional cleansing, inner peace, and softening the weight of resentment, guilt, regret, or unresolved emotional pain.",
+    description: "An ancient Hawaiian practice of reconciliation and forgiveness. It works with four simple phrases to release the weight of resentment, guilt, and emotional debt — sometimes from patterns you didn't even know you were carrying.",
   },
   {
     title: "Chakra Healing",
-    description:
-      "Focuses on restoring energetic balance in areas where emotions may feel blocked, heavy, or depleted. It can support grounding, openness, emotional flow, and a greater sense of inner harmony.",
+    description: "When emotions get stuck, they live in the body. Chakra work helps restore flow to the places where grief, fear, shame, or disconnection have created heaviness or numbness.",
   },
   {
     title: "Akashic Records",
-    description:
-      "Offers intuitive insight into deeper soul patterns, recurring lessons, and emotional themes. This approach can bring clarity, meaning, and a wider understanding of your healing path.",
+    description: "A way of accessing deeper soul-level patterns — the recurring themes, lessons, and emotional signatures that keep showing up across different chapters of your life.",
   },
   {
     title: "Bach Flower Remedy & Supportive Tools",
-    description:
-      "Uses subtle emotional support tools such as Bach Flower Remedy, Vedic switch-words, and Mokshapatta to complement the healing process and gently support emotional balance and self-awareness.",
+    description: "Gentle, plant-based support for emotional states. Alongside tools like Vedic switch-words and Mokshapatta, these offer quiet, continuous support between sessions.",
   },
 ];
 
 const TechniquesSection = () => (
-  <section className="py-24 gradient-himalayan">
-    <div className="container mx-auto px-4 max-w-6xl">
+  <section id="modalities" className="relative py-28 gradient-forest texture-overlay">
+    <div className="relative z-10 container mx-auto px-4 max-w-5xl">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center max-w-3xl mx-auto mb-14"
+        className="mb-16"
       >
-        <p className="text-primary text-sm uppercase tracking-[0.25em] mb-4 font-semibold">Techniques Used in Sessions</p>
-        <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground mb-6">
-          Healing Modalities Used to Support Emotional Transformation
-        </h2>
-        <p className="text-muted-foreground text-lg leading-relaxed">
-          Every person heals differently. That is why sessions are not rigid or one-size-fits-all.
-          The techniques used are chosen with care, depending on what you are holding emotionally,
-          what feels safe for your system, and what will best support your healing journey in that moment.
+        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 font-body">
+          The tools I work with
         </p>
+        <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground leading-tight max-w-2xl">
+          No single modality heals everything.<br />
+          <span className="italic">That's why I don't use just one.</span>
+        </h2>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {techniques.map((technique, index) => (
-          <motion.article
-            key={technique.title}
-            initial={{ opacity: 0, y: 24 }}
+      <div className="space-y-4">
+        {techniques.map((t, i) => (
+          <motion.div
+            key={t.title}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.06 }}
-            className="rounded-[1.5rem] bg-background/85 backdrop-blur-sm border border-lavender-deep/30 p-7 shadow-card"
+            transition={{ delay: i * 0.04 }}
+            className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-7 border-b border-border last:border-0"
           >
-            <div className="mb-4 flex items-center gap-3">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground text-sm font-semibold">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3 className="font-heading text-2xl text-foreground">{technique.title}</h3>
+            <div className="md:col-span-4">
+              <h3 className="font-heading text-xl md:text-2xl text-foreground group-hover:text-accent transition-colors">
+                {t.title}
+              </h3>
             </div>
-            <p className="text-muted-foreground leading-relaxed">{technique.description}</p>
-          </motion.article>
+            <div className="md:col-span-8">
+              <p className="text-muted-foreground leading-[1.8]">{t.description}</p>
+            </div>
+          </motion.div>
         ))}
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="mt-12 rounded-[1.75rem] border border-lavender-deep/30 bg-background/75 p-8 text-center shadow-card"
+        className="mt-16 font-heading text-xl text-foreground italic text-center max-w-2xl mx-auto"
       >
-        <h3 className="font-heading text-3xl text-foreground mb-4">A gentle and intuitive process</h3>
-        <p className="text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-          These modalities are not used to overwhelm you with techniques, but to create a deeply supportive process.
-          The intention is always to help you feel emotionally safe, more aware of your patterns, and more connected to your own inner wisdom.
-          Healing unfolds gently — with presence, compassion, and respect for your unique pace.
-        </p>
-      </motion.div>
+        I don't choose techniques in advance. I listen to what's present in you and let the session unfold from there.
+      </motion.p>
     </div>
   </section>
 );

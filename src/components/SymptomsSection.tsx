@@ -1,104 +1,102 @@
 import { motion } from "framer-motion";
-import { CircleAlert, HeartHandshake, ShieldAlert, Waves } from "lucide-react";
-
-const symptomGroups = [
-  {
-    icon: Waves,
-    title: "Emotional symptoms",
-    items: [
-      "Frequent emotional overwhelm, unexplained sadness, or inner heaviness",
-      "Feeling anxious, easily activated, or unable to relax even in safe situations",
-      "Mood swings, emotional numbness, or difficulty understanding what you truly feel",
-      "Carrying guilt, shame, grief, or fear that seems bigger than the present moment",
-    ],
-  },
-  {
-    icon: HeartHandshake,
-    title: "Relationship patterns",
-    items: [
-      "People-pleasing, over-giving, or losing yourself in relationships",
-      "Fear of rejection, abandonment, or not feeling emotionally safe with others",
-      "Getting triggered in conflict and struggling to communicate your deeper needs",
-      "Repeating painful relationship patterns even when you want something different",
-    ],
-  },
-  {
-    icon: ShieldAlert,
-    title: "Self-worth and identity",
-    items: [
-      "Feeling not good enough, unseen, or unsure of your value",
-      "Overthinking, self-doubt, and constantly seeking external validation",
-      "Difficulty setting boundaries without guilt or fear",
-      "Feeling disconnected from your authentic voice, desires, and inner truth",
-    ],
-  },
-  {
-    icon: CircleAlert,
-    title: "Signs deeper healing may help",
-    items: [
-      "You understand your patterns mentally, but they still keep repeating",
-      "You have done a lot for others, yet your own emotional needs remain unmet",
-      "You feel strong on the outside while carrying silent pain inside",
-      "You sense that something within is asking to be seen, held, and gently healed",
-    ],
-  },
-];
 
 const SymptomsSection = () => (
-  <section className="py-24 bg-background">
-    <div className="container mx-auto px-4 max-w-6xl">
+  <section id="healing" className="relative py-28 texture-overlay">
+    <div className="relative z-10 container mx-auto px-4 max-w-5xl">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center max-w-3xl mx-auto mb-14"
+        className="text-center mb-20"
       >
-        <p className="text-primary text-sm uppercase tracking-[0.25em] mb-4 font-semibold">Signs You May Be Ready to Heal</p>
-        <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground mb-6">
-          Symptoms and Patterns That Often Need Gentle Healing
-        </h2>
-        <p className="text-muted-foreground text-lg leading-relaxed">
-          Emotional wounds do not always appear as something dramatic. Sometimes they show up quietly through repeated reactions,
-          exhausting relationship patterns, inner confusion, or a persistent feeling that you are carrying too much alone.
-          These signs are not weaknesses — they are invitations to return to yourself with compassion.
+        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 font-body">
+          What brings people to this work
         </p>
+        <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-light text-foreground leading-tight">
+          You don't need to be <span className="italic">"broken"</span><br />
+          to deserve healing.
+        </h2>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {symptomGroups.map((group, index) => (
+      {/* Editorial asymmetric layout */}
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <motion.div
-            key={group.title}
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.08 }}
-            className="rounded-[1.5rem] border border-border bg-card p-8 shadow-card"
+            className="bg-card p-10 rounded-sm border-l-2 border-accent"
           >
-            <div className="mb-5 inline-flex rounded-full bg-lavender p-3 text-primary">
-              <group.icon className="h-6 w-6" />
-            </div>
-            <h3 className="font-heading text-2xl text-foreground mb-4">{group.title}</h3>
-            <ul className="space-y-3 text-muted-foreground leading-relaxed">
-              {group.items.map((item) => (
-                <li key={item} className="flex gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gold shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
+            <h3 className="font-heading text-2xl text-foreground mb-5">Emotional weight</h3>
+            <ul className="space-y-4 text-muted-foreground leading-[1.8]">
+              <li>Unexplained sadness that sits in your chest like a stone</li>
+              <li>Anxiety that doesn't match what's actually happening</li>
+              <li>Numbness — feeling disconnected from your own emotions</li>
+              <li>Guilt or shame that follows you even when you've done nothing wrong</li>
             </ul>
           </motion.div>
-        ))}
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="bg-card p-10 rounded-sm md:mt-12"
+          >
+            <h3 className="font-heading text-2xl text-foreground mb-5">Relationship patterns</h3>
+            <ul className="space-y-4 text-muted-foreground leading-[1.8]">
+              <li>Over-giving until you have nothing left for yourself</li>
+              <li>Fear of abandonment that makes you grip too tightly or pull away</li>
+              <li>Reactions that are bigger than the moment — old pain speaking through you</li>
+              <li>Choosing people who feel familiar but aren't safe</li>
+            </ul>
+          </motion.div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-card p-10 rounded-sm md:mt-0"
+          >
+            <h3 className="font-heading text-2xl text-foreground mb-5">Self-worth struggles</h3>
+            <ul className="space-y-4 text-muted-foreground leading-[1.8]">
+              <li>A voice inside that says you're not enough — no matter what you achieve</li>
+              <li>Difficulty saying no without drowning in guilt</li>
+              <li>Needing validation from others to feel okay about yourself</li>
+              <li>Feeling invisible, even to the people closest to you</li>
+            </ul>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="p-10 rounded-sm bg-primary/5 border border-primary/10 md:mt-8"
+          >
+            <h3 className="font-heading text-2xl text-foreground mb-5">The quiet knowing</h3>
+            <ul className="space-y-4 text-muted-foreground leading-[1.8]">
+              <li>You've tried thinking your way out, but the patterns remain</li>
+              <li>You hold everything together for others while falling apart alone</li>
+              <li>Something deep inside is asking to be heard — you can feel it</li>
+              <li>You're tired of surviving and ready to actually live</li>
+            </ul>
+          </motion.div>
+        </div>
       </div>
 
-      <motion.p
+      <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="text-center text-muted-foreground italic max-w-3xl mx-auto mt-12 leading-relaxed"
+        className="mt-16 text-center"
       >
-        If you recognize yourself in any of these experiences, it does not mean something is wrong with you.
-        It may simply mean your mind, body, and inner child are asking for a safer, more loving way to process what has been held for too long.
-      </motion.p>
+        <p className="font-heading text-2xl text-foreground italic max-w-2xl mx-auto leading-relaxed">
+          If any of this resonates, it's not a sign that something is wrong with you. It's a sign that something inside you is ready.
+        </p>
+      </motion.div>
     </div>
   </section>
 );

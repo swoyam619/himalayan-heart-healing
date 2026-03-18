@@ -2,26 +2,39 @@ import { Instagram, Mail } from "lucide-react";
 import logoBanner from "@/assets/logo-banner.png";
 
 const Footer = () => (
-  <footer id="contact" className="bg-foreground py-16">
-    <div className="container mx-auto px-4 text-center">
-      <div className="mx-auto mb-6 inline-flex rounded-2xl bg-background/10 p-3 ring-1 ring-primary-foreground/15">
-        <img src={logoBanner} alt="Danphe Healing" className="h-24 md:h-28 mx-auto object-contain" />
-      </div>
-      <p className="text-primary-foreground/70 italic mb-8 text-base">Rooted with Himalayan Love</p>
+  <footer id="contact" className="bg-earth-deep py-20">
+    <div className="container mx-auto px-4">
+      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+        <div className="md:col-span-5">
+          <img src={logoBanner} alt="Danphe Healing" className="h-20 object-contain mb-4 opacity-80" />
+          <p className="text-primary-foreground/50 italic text-sm">
+            Rooted with Himalayan Love
+          </p>
+        </div>
 
-      <div className="flex items-center justify-center gap-8 mb-8">
-        <a href="https://instagram.com/danphehealing" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary-foreground/70 hover:text-gold transition-colors">
-          <Instagram size={20} />
-          <span className="text-sm">@danphehealing</span>
-        </a>
-        <a href="mailto:vandanasoulstar@gmail.com" className="flex items-center gap-2 text-primary-foreground/70 hover:text-gold transition-colors">
-          <Mail size={20} />
-          <span className="text-sm">vandanasoulstar@gmail.com</span>
-        </a>
+        <div className="md:col-span-7">
+          <p className="text-primary-foreground/60 leading-[1.9] mb-8">
+            If you have questions before applying, or simply want to say hello, I'd love to hear from you.
+          </p>
+
+          <div className="space-y-3">
+            <a href="https://instagram.com/danphehealing" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-primary-foreground/50 hover:text-primary-foreground/80 transition-colors text-sm">
+              <Instagram size={16} />
+              @danphehealing
+            </a>
+            <a href="mailto:vandanasoulstar@gmail.com" className="flex items-center gap-3 text-primary-foreground/50 hover:text-primary-foreground/80 transition-colors text-sm">
+              <Mail size={16} />
+              vandanasoulstar@gmail.com
+            </a>
+          </div>
+        </div>
       </div>
 
-      <div className="w-20 h-px bg-primary-foreground/20 mx-auto mb-6" />
-      <p className="text-primary-foreground/40 text-xs">© {new Date().getFullYear()} Danphe Healing. All rights reserved.</p>
+      <div className="max-w-4xl mx-auto mt-16 pt-8 border-t border-primary-foreground/10">
+        <p className="text-primary-foreground/30 text-xs">
+          © {new Date().getFullYear()} Danphe Healing. All rights reserved.
+        </p>
+      </div>
     </div>
   </footer>
 );
