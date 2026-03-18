@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import healingBg from "@/assets/healing-bg.jpg";
 
 const schema = z.object({
-name: z.string().min(1, "Enter your name"),
+name: z.string().min(1, "Please enter your name"),
 email: z.string().email("Enter a valid email"),
 pattern: z.string().min(1, "Share your experience"),
 sessionType: z.string().min(1, "Select an option"),
@@ -74,17 +74,21 @@ try {
 return ( <section className="relative py-28">
 
 ```
-  {/* Background FIXED */}
+  {/* BACKGROUND FIXED */}
   <div className="absolute inset-0 -z-10">
     <img src={healingBg} className="w-full h-full object-cover" />
-    <div className="absolute inset-0 bg-black/70"></div>
+    <div className="absolute inset-0 bg-black/80"></div>
   </div>
 
   <div className="relative z-20 max-w-xl mx-auto px-4">
 
-    <h2 className="text-white text-4xl mb-10 text-center">
+    <motion.h2
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="text-white text-4xl mb-10 text-center"
+    >
       Work With Me
-    </h2>
+    </motion.h2>
 
     {submitted ? (
       <p className="text-center text-white">
@@ -98,7 +102,7 @@ return ( <section className="relative py-28">
           placeholder="Your Name"
           value={form.name}
           onChange={(e) => handleChange("name", e.target.value)}
-          className="w-full p-3 bg-white text-black"
+          className="w-full p-3 bg-transparent border-b border-white text-white placeholder-white/50 focus:outline-none caret-white"
         />
         {errors.name && <p className="text-red-400">{errors.name}</p>}
 
@@ -107,14 +111,14 @@ return ( <section className="relative py-28">
           placeholder="Your Email"
           value={form.email}
           onChange={(e) => handleChange("email", e.target.value)}
-          className="w-full p-3 bg-white text-black"
+          className="w-full p-3 bg-transparent border-b border-white text-white placeholder-white/50 focus:outline-none caret-white"
         />
         {errors.email && <p className="text-red-400">{errors.email}</p>}
 
         <select
           value={form.sessionType}
           onChange={(e) => handleChange("sessionType", e.target.value)}
-          className="w-full p-3 bg-white text-black"
+          className="w-full p-3 bg-transparent border-b border-white text-white focus:outline-none"
         >
           <option value="">Select</option>
           <option value="private">Private Session</option>
@@ -126,12 +130,12 @@ return ( <section className="relative py-28">
           placeholder="What are you going through?"
           value={form.pattern}
           onChange={(e) => handleChange("pattern", e.target.value)}
-          className="w-full p-3 bg-white text-black"
+          className="w-full p-3 bg-transparent border-b border-white text-white placeholder-white/50 focus:outline-none caret-white"
         />
         {errors.pattern && <p className="text-red-400">{errors.pattern}</p>}
 
-        <button className="w-full bg-white text-black p-3">
-          Submit
+        <button className="w-full border border-white text-white py-3 hover:bg-white hover:text-black transition">
+          Submit Application
         </button>
 
       </form>
