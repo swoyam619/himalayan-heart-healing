@@ -2,16 +2,22 @@ import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    text: "I walked in thinking I needed to 'fix' something. Vandana helped me see that what I actually needed was to stop running from myself. That shift changed everything.",
-    name: "A.R.",
+    text: "Vandana is doing an incredible job with her techniques. Each session felt purposeful and grounded — she knows exactly how to hold space while guiding you through what needs to surface. I felt real shifts, not just temporary relief.",
+    name: "Swoyam Banskota",
+    location: "Nepal",
+    stars: 4.5,
   },
   {
-    text: "I've done years of talk therapy. This was different. It reached something words alone couldn't touch. For the first time, I felt the weight actually lift — not just temporarily, but in a lasting way.",
-    name: "S.K.",
+    text: "I came to Vandana feeling lost and disconnected from myself. Through her work, I found layers of my own depth I didn't know existed. She helped me reconnect with parts of me I had buried for years. I finally feel like I know who I am again.",
+    name: "Sudha Bhattarai",
+    location: "Goa, India",
+    stars: 5,
   },
   {
-    text: "The gentleness of the space surprised me. I didn't have to perform vulnerability or prove my pain was 'bad enough.' I just had to show up. That was healing in itself.",
-    name: "M.T.",
+    text: "What I loved most about working with Vandana is how unique her techniques are. It's not the same thing you find everywhere — she brings something deeply personal and intuitive to every session. I've never experienced healing quite like this before.",
+    name: "Sweta Mishra",
+    location: "",
+    stars: 5,
   },
 ];
 
