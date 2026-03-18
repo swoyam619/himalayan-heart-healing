@@ -23,27 +23,56 @@ const WorkWithMeSection = () => {
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const result = applicationSchema.safeParse(form);
-    if (!result.success) {
-      const fieldErrors: Partial<Record<keyof FormData, string>> = {};
-      result.error.errors.forEach((err) => {
-        const field = err.path[0] as keyof FormData;
-        fieldErrors[field] = err.message;
-      });
-      setErrors(fieldErrors);
-      return;
-    }
-    setErrors({});
-    setSubmitted(true);
-    toast.success("Thank you. I've received your application and will be in touch soon.");
-  };
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-  const update = (field: keyof FormData, value: string) => {
-    setForm((p) => ({ ...p, [field]: value }));
-    if (errors[field]) setErrors((p) => ({ ...p, [field]: undefined }));
-  };
+  const result = applicationSchema.safeParse(form);
+  if (!result.success) {
+    const fieldErrors: Partial<Record<keyof FormData, string>> = {};
+    result.error.errors.forEach((err) => {
+      const field = err.path[0] as keyof FormData;
+      fieldErrors[field] = err.message;
+    });
+    setErrors(fieldErrors);
+    return;
+  }
+
+  setErrors({});
+
+  try {
+    const response = await fetch("https://formspree.io/f/xaqpalqz", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        sessionType: form.sessionType,
+        message: `
+Pattern: ${form.pattern}
+
+Inspiration: ${form.inspiration}
+
+Previous Work: ${form.previousWork}
+
+Hopes: ${form.hopes}
+        `,
+      }),
+    });
+
+    if (response.ok) {
+      setSubmitted(true);
+      toast.success("Thank you. I've received your application and will be in touch soon.");
+    } else {
+      toast.error("Something went wrong. Please try again.");
+    }
+  } catch (error) {
+    toast.error("Network error. Please try again.");
+  }
+};
+ 
 
   const inputClass = "w-full px-0 py-3 bg-transparent border-0 border-b border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/30 focus:outline-none focus:border-primary-foreground/50 transition-colors font-body";
   const labelClass = "block text-xs uppercase tracking-[0.2em] text-primary-foreground/60 mb-3 font-body";
