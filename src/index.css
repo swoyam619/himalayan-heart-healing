@@ -6,43 +6,49 @@
 
 @layer base {
   :root {
-    --background: 30 25% 97%;
-    --foreground: 25 20% 18%;
+    --background: 40 30% 96%;
+    --foreground: 25 30% 14%;
 
-    --card: 30 20% 95%;
-    --card-foreground: 25 20% 18%;
+    --card: 38 25% 93%;
+    --card-foreground: 25 30% 14%;
 
-    --popover: 30 25% 97%;
-    --popover-foreground: 25 20% 18%;
+    --popover: 40 30% 96%;
+    --popover-foreground: 25 30% 14%;
 
-    --primary: 275 30% 45%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 155 25% 28%;
+    --primary-foreground: 40 30% 96%;
 
-    --secondary: 35 60% 90%;
-    --secondary-foreground: 25 20% 18%;
+    --secondary: 30 35% 88%;
+    --secondary-foreground: 25 30% 14%;
 
-    --muted: 30 15% 92%;
-    --muted-foreground: 25 10% 45%;
+    --muted: 35 20% 90%;
+    --muted-foreground: 25 15% 42%;
 
-    --accent: 35 80% 55%;
-    --accent-foreground: 25 20% 12%;
+    --accent: 16 45% 55%;
+    --accent-foreground: 40 30% 96%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 30 15% 88%;
-    --input: 30 15% 88%;
-    --ring: 275 30% 45%;
+    --border: 35 18% 85%;
+    --input: 35 18% 85%;
+    --ring: 155 25% 28%;
 
     --radius: 0.75rem;
 
-    --lavender: 275 40% 92%;
-    --lavender-deep: 275 35% 82%;
-    --gold: 38 70% 55%;
-    --gold-light: 38 60% 88%;
-    --earth: 25 25% 35%;
-    --earth-light: 30 20% 75%;
-    --himalayan-mist: 260 20% 95%;
+    --gold: 38 55% 50%;
+    --gold-light: 40 40% 85%;
+    --earth: 25 30% 30%;
+    --earth-light: 30 20% 70%;
+    --earth-deep: 20 35% 22%;
+    --cream: 40 35% 94%;
+    --cream-warm: 35 40% 91%;
+    --terracotta: 16 45% 55%;
+    --terracotta-light: 18 35% 80%;
+    --forest: 155 25% 28%;
+    --forest-light: 150 15% 85%;
+    --sage: 140 12% 70%;
+    --sand: 38 30% 82%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -70,30 +76,92 @@
 }
 
 @layer utilities {
-  .gradient-himalayan {
-    background: linear-gradient(135deg, hsl(var(--lavender)) 0%, hsl(var(--gold-light)) 50%, hsl(var(--himalayan-mist)) 100%);
+  .gradient-earth {
+    background: linear-gradient(180deg, hsl(var(--cream-warm)) 0%, hsl(var(--background)) 100%);
+  }
+
+  .gradient-forest {
+    background: linear-gradient(180deg, hsl(var(--forest-light)) 0%, hsl(var(--background)) 100%);
   }
 
   .gradient-warm {
-    background: linear-gradient(135deg, hsl(var(--gold-light)) 0%, hsl(var(--secondary)) 100%);
+    background: linear-gradient(135deg, hsl(var(--gold-light)) 0%, hsl(var(--cream)) 100%);
+  }
+
+  .gradient-sand {
+    background: linear-gradient(180deg, hsl(var(--sand) / 0.4) 0%, hsl(var(--background)) 100%);
+  }
+
+  .gradient-himalayan {
+    background: linear-gradient(135deg, hsl(var(--cream-warm)) 0%, hsl(var(--forest-light)) 50%, hsl(var(--cream)) 100%);
   }
 
   .gradient-lavender {
-    background: linear-gradient(180deg, hsl(var(--lavender)) 0%, hsl(var(--background)) 100%);
+    background: linear-gradient(180deg, hsl(var(--cream-warm)) 0%, hsl(var(--background)) 100%);
+  }
+
+  .shadow-healing {
+    box-shadow: 0 10px 40px -10px hsl(var(--earth) / 0.12), 0 4px 12px -4px hsl(var(--gold) / 0.08);
+  }
+
+  .shadow-card {
+    box-shadow: 0 4px 20px -4px hsl(var(--earth) / 0.06), 0 2px 8px -2px hsl(var(--gold) / 0.04);
+  }
+
+  .shadow-float {
+    box-shadow: 0 20px 60px -15px hsl(var(--earth) / 0.15), 0 8px 24px -8px hsl(var(--gold) / 0.08);
   }
 
   .text-gradient-gold {
-    background: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(35, 80%, 40%) 100%);
+    background: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--terracotta)) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+}
 
-  .shadow-healing {
-    box-shadow: 0 10px 40px -10px hsl(var(--primary) / 0.15), 0 4px 12px -4px hsl(var(--gold) / 0.1);
-  }
+/* Mandala separator */
+.mandala-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
 
-  .shadow-card {
-    box-shadow: 0 4px 20px -4px hsl(var(--primary) / 0.08), 0 2px 8px -2px hsl(var(--gold) / 0.06);
-  }
+.mandala-separator::before,
+.mandala-separator::after {
+  content: '';
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.4), transparent);
+}
+
+/* Lotus divider */
+.lotus-divider {
+  text-align: center;
+  position: relative;
+  padding: 1.5rem 0;
+}
+
+.lotus-divider::before {
+  content: '❋';
+  font-size: 1.25rem;
+  color: hsl(var(--gold));
+  opacity: 0.6;
+}
+
+/* Texture overlay */
+.texture-overlay {
+  position: relative;
+}
+
+.texture-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b8a88a' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
 }
