@@ -51,10 +51,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        lavender: {
-          DEFAULT: "hsl(var(--lavender))",
-          deep: "hsl(var(--lavender-deep))",
-        },
         gold: {
           DEFAULT: "hsl(var(--gold))",
           light: "hsl(var(--gold-light))",
@@ -62,9 +58,28 @@ export default {
         earth: {
           DEFAULT: "hsl(var(--earth))",
           light: "hsl(var(--earth-light))",
+          deep: "hsl(var(--earth-deep))",
+        },
+        cream: {
+          DEFAULT: "hsl(var(--cream))",
+          warm: "hsl(var(--cream-warm))",
+        },
+        terracotta: {
+          DEFAULT: "hsl(var(--terracotta))",
+          light: "hsl(var(--terracotta-light))",
+        },
+        forest: {
+          DEFAULT: "hsl(var(--forest))",
+          light: "hsl(var(--forest-light))",
+        },
+        sage: "hsl(var(--sage))",
+        sand: "hsl(var(--sand))",
+        lavender: {
+          DEFAULT: "hsl(var(--cream-warm))",
+          deep: "hsl(var(--sand))",
         },
         himalayan: {
-          mist: "hsl(var(--himalayan-mist))",
+          mist: "hsl(var(--cream))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -97,7 +112,11 @@ export default {
         },
         "glow": {
           "0%, 100%": { opacity: "0.4" },
-          "50%": { opacity: "0.8" },
+          "50%": { opacity: "0.7" },
+        },
+        "drift": {
+          "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+          "50%": { transform: "translateY(-6px) rotate(1deg)" },
         },
       },
       animation: {
@@ -105,6 +124,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "float": "float 6s ease-in-out infinite",
         "glow": "glow 3s ease-in-out infinite",
+        "drift": "drift 8s ease-in-out infinite",
       },
     },
   },

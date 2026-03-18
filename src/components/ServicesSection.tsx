@@ -1,68 +1,58 @@
 import { motion } from "framer-motion";
-import { Heart, Sparkles, HandHeart, Users } from "lucide-react";
-
-const services = [
-  {
-    icon: Heart,
-    title: "Inner Child Healing",
-    desc: "Reconnect with younger parts of yourself that may still hold fear, hurt, rejection, or unmet emotional needs. These sessions support emotional safety, self-understanding, and deeper compassion for the parts of you that learned to survive in silence.",
-  },
-  {
-    icon: Sparkles,
-    title: "Energy Healing",
-    desc: "Restore emotional and energetic balance through intuitive and heart-led healing methods. This work can help shift heaviness, release stagnation, and support a greater sense of inner peace, grounding, and clarity.",
-  },
-  {
-    icon: HandHeart,
-    title: "Emotional Guidance & Support",
-    desc: "Compassionate sessions designed to help you understand your emotional triggers, recurring patterns, and inner conflicts. Together we create space for awareness, reflection, and gentle transformation without judgment.",
-  },
-  {
-    icon: Users,
-    title: "Healing Workshops",
-    desc: "Transformative group experiences focused on emotional awareness, healing, and self-connection. Workshops offer supportive guidance, shared reflection, and practices that help you feel seen, held, and empowered in community.",
-  },
-];
 
 const ServicesSection = () => (
-  <section id="services" className="py-24 bg-background">
-    <div className="container mx-auto px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-16 max-w-3xl mx-auto"
-      >
-        <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground mb-4">Healing Services</h2>
-        <div className="w-20 h-0.5 bg-gold mx-auto mb-6" />
-        <p className="text-muted-foreground text-lg leading-relaxed">
-          Danphe Healing offers gentle spaces for emotional release, self-understanding, and energetic restoration.
-          Whether you are seeking one-to-one support or healing in a group setting, each offering is designed to meet you with care,
-          sensitivity, and respect for your individual journey.
-        </p>
-      </motion.div>
+  <section id="services" className="py-28">
+    <div className="container mx-auto px-4 max-w-5xl">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="lg:col-span-5"
+        >
+          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 font-body">
+            What I offer
+          </p>
+          <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground leading-tight mb-6">
+            Spaces that <span className="italic">hold</span> you.
+          </h2>
+          <p className="text-muted-foreground leading-[1.9]">
+            Whether you come for one session or walk this path over months, every space I create is rooted in the same intention: for you to feel safe enough to be honest about what you're carrying.
+          </p>
+        </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        {services.map((s, i) => (
-          <motion.div
-            key={s.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.15 }}
-            className="bg-card rounded-xl p-8 shadow-card border border-border hover:shadow-healing transition-shadow group"
-          >
-            <s.icon className="w-10 h-10 text-primary mb-4 group-hover:text-gold transition-colors" />
-            <h3 className="font-heading text-2xl text-foreground mb-3">{s.title}</h3>
-            <p className="text-muted-foreground leading-relaxed">{s.desc}</p>
-          </motion.div>
-        ))}
-      </div>
-
-      <div className="text-center mt-12">
-        <a href="#work-with-me" className="px-8 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity">
-          Explore Sessions
-        </a>
+        <div className="lg:col-span-7 space-y-6">
+          {[
+            {
+              title: "Private Healing Sessions",
+              text: "One-to-one sessions where we work with whatever is most present for you — old wounds, emotional patterns, relationship dynamics, self-worth, grief. There's no formula. Just presence, care, and intuitive guidance.",
+            },
+            {
+              title: "Energy Healing",
+              text: "For when words aren't enough. These sessions work at the energetic level to release what's stuck, soften what's guarded, and restore a sense of flow. You don't need to understand it intellectually to feel the difference.",
+            },
+            {
+              title: "Emotional Guidance",
+              text: "Ongoing support for people navigating emotional transitions, difficult relationships, or the messy middle of personal transformation. Think of it as having someone who truly sees you in your corner.",
+            },
+            {
+              title: "Healing Workshops",
+              text: "Small group experiences focused on emotional awareness, inner child work, and collective healing. There is something powerful about being witnessed by others who understand — without judgment, without advice.",
+            },
+          ].map((s, i) => (
+            <motion.div
+              key={s.title}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="p-8 bg-card rounded-sm border border-border hover:shadow-card transition-shadow"
+            >
+              <h3 className="font-heading text-xl text-foreground mb-3">{s.title}</h3>
+              <p className="text-muted-foreground leading-[1.8]">{s.text}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   </section>

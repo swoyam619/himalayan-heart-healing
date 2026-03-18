@@ -1,44 +1,50 @@
 import { motion } from "framer-motion";
 
-const points = [
-  "Emotionally overwhelmed or carrying feelings that are difficult to express",
-  "Stuck in people-pleasing patterns and finding it hard to say no",
-  "Triggered in relationships and reacting more deeply than the moment seems to require",
-  "Unsure of your true self-worth or disconnected from your inner voice",
-  "Repeating painful emotional cycles even after trying to think your way out of them",
-  "Feeling strong for everyone else while quietly feeling exhausted within",
-];
-
 const PainPointsSection = () => (
-  <section className="py-24 gradient-lavender">
-    <div className="container mx-auto px-4 max-w-4xl text-center">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-          Sometimes the patterns we struggle with in adult life began much earlier than we realize.
-          You may have learned to survive by staying quiet, being strong, pleasing others, or disconnecting from your own needs.
-          Over time, these protective patterns can become exhausting.
-        </p>
-        <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-          You may appear composed on the outside, yet inside feel tender, confused, emotionally burdened, or disconnected from who you truly are.
-          Healing begins when we slow down enough to listen to what these inner patterns are trying to tell us.
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 text-left">
-          {points.map((p) => (
-            <div key={p} className="bg-background/70 backdrop-blur-sm rounded-lg p-5 shadow-card border border-lavender-deep/30">
-              <p className="text-foreground font-body leading-relaxed">• {p}</p>
-            </div>
-          ))}
-        </div>
-        <p className="text-muted-foreground text-base leading-relaxed italic max-w-3xl mx-auto">
-          These experiences often have roots in childhood emotional pain, unmet needs, unresolved grief, or patterns carried in the nervous system.
-          Healing is not about blaming the past — it is about creating a safe and compassionate space to understand yourself more deeply and gently release what no longer needs to be carried alone.
-        </p>
-      </motion.div>
+  <section className="relative py-32 texture-overlay">
+    <div className="relative z-10 container mx-auto px-4">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        {/* Left — large emotional quote */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="lg:col-span-5 lg:sticky lg:top-32"
+        >
+          <p className="font-heading text-3xl md:text-4xl lg:text-5xl font-light text-foreground leading-snug italic">
+            "You've been strong for so long that the exhaustion feels normal."
+          </p>
+          <div className="mt-8 w-12 h-px bg-gold" />
+        </motion.div>
+
+        {/* Right — story blocks */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="lg:col-span-7 space-y-8"
+        >
+          <p className="text-muted-foreground text-lg leading-[1.9]">
+            Maybe it started as a child — learning to stay quiet to keep the peace, becoming the responsible one before you were ready, or swallowing your feelings because no one seemed to notice them. These weren't choices. They were survival.
+          </p>
+
+          <p className="text-muted-foreground text-lg leading-[1.9]">
+            Now, as an adult, those same patterns show up differently. You give too much. You say yes when your body is screaming no. You feel a heaviness you can't name. Relationships trigger something old — something that doesn't match the present moment but still takes over completely.
+          </p>
+
+          <div className="bg-card rounded-sm p-8 border-l-2 border-gold">
+            <p className="text-foreground leading-[1.9]">
+              You might recognize yourself here: overwhelmed by emotions that seem too big for the situation. Exhausted from holding space for everyone but yourself. Trapped in cycles you can see clearly but can't seem to break. Feeling invisible even in a room full of people who care about you.
+            </p>
+          </div>
+
+          <p className="text-muted-foreground leading-[1.9]">
+            None of this means something is wrong with you. It means something inside you has been waiting — patiently, quietly — to finally be met with kindness instead of judgment.
+          </p>
+        </motion.div>
+      </div>
     </div>
   </section>
 );

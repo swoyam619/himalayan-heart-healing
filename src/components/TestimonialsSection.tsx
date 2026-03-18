@@ -2,30 +2,34 @@ import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    text: "Working with Vandana helped me understand patterns I'd been carrying since childhood. I finally feel free to be myself.",
+    text: "I walked in thinking I needed to 'fix' something. Vandana helped me see that what I actually needed was to stop running from myself. That shift changed everything.",
     name: "A.R.",
   },
   {
-    text: "The sessions were so gentle and safe. I didn't realize how much I was holding until I let it go.",
+    text: "I've done years of talk therapy. This was different. It reached something words alone couldn't touch. For the first time, I felt the weight actually lift — not just temporarily, but in a lasting way.",
     name: "S.K.",
   },
   {
-    text: "Vandana creates such a compassionate space. My emotional triggers have reduced significantly.",
+    text: "The gentleness of the space surprised me. I didn't have to perform vulnerability or prove my pain was 'bad enough.' I just had to show up. That was healing in itself.",
     name: "M.T.",
   },
 ];
 
 const TestimonialsSection = () => (
-  <section className="py-24 bg-background">
+  <section className="py-28">
     <div className="container mx-auto px-4 max-w-5xl">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-16"
+        className="text-center mb-20"
       >
-        <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground mb-4">Words from the Heart</h2>
-        <div className="w-20 h-0.5 bg-gold mx-auto" />
+        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 font-body">
+          In their words
+        </p>
+        <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground">
+          What it feels like <span className="italic">after</span>
+        </h2>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -35,12 +39,11 @@ const TestimonialsSection = () => (
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.15 }}
-            className="bg-card rounded-xl p-8 shadow-card border border-border relative"
+            transition={{ delay: i * 0.12 }}
+            className={`bg-card p-10 rounded-sm border border-border ${i === 1 ? "md:-mt-8" : ""}`}
           >
-            <span className="text-5xl text-lavender-deep/50 font-heading absolute top-4 left-6">"</span>
-            <p className="text-muted-foreground leading-relaxed mb-6 mt-6 italic">{t.text}</p>
-            <p className="text-foreground font-semibold text-sm">— {t.name}</p>
+            <p className="text-muted-foreground leading-[1.9] mb-8 italic">"{t.text}"</p>
+            <p className="text-foreground text-sm font-body tracking-wide">— {t.name}</p>
           </motion.div>
         ))}
       </div>
