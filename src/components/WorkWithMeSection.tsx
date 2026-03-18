@@ -5,83 +5,46 @@ import { toast } from "sonner";
 import healingBg from "@/assets/healing-bg.jpg";
 
 const applicationSchema = z.object({
-  name: z.string().trim().min(1, "Please share your name").max(100),
+  name: z.string().trim().min(1, "Name is required").max(100),
   email: z.string().trim().email("Please enter a valid email").max(255),
-  pattern: z.string().trim().min(1, "Take your time — even a few words help").max(2000),
-  inspiration: z.string().trim().max(2000).optional(),
-  previousWork: z.string().trim().max(2000).optional(),
-  hopes: z.string().trim().max(2000).optional(),
-  sessionType: z.string().min(1, "Please let me know what interests you"),
+  pattern: z.string().trim().min(1, "Please share what you'd like support with").max(2000),
+  sessionType: z.string().min(1, "Please select a session type"),
 });
 
 type FormData = z.infer<typeof applicationSchema>;
 
 const WorkWithMeSection = () => {
-  const [form, setForm] = useState<FormData>({
-    name: "", email: "", pattern: "", inspiration: "", previousWork: "", hopes: "", sessionType: "",
-  });
+  const [form, setForm] = useState<FormData>({ name: "", email: "", pattern: "", sessionType: "" });
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [submitted, setSubmitted] = useState(false);
 
- const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-
-  const result = applicationSchema.safeParse(form);
-  if (!result.success) {
-    const fieldErrors: Partial<Record<keyof FormData, string>> = {};
-    result.error.errors.forEach((err) => {
-      const field = err.path[0] as keyof FormData;
-      fieldErrors[field] = err.message;
-    });
-    setErrors(fieldErrors);
-    return;
-  }
-
-  setErrors({});
-
-  try {
-    const response = await fetch("https://formspree.io/f/xaqpalqz", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        name: form.name,
-        email: form.email,
-        sessionType: form.sessionType,
-        message: `
-Pattern: ${form.pattern}
-
-Inspiration: ${form.inspiration}
-
-Previous Work: ${form.previousWork}
-
-Hopes: ${form.hopes}
-        `,
-      }),
-    });
-
-    if (response.ok) {
-      setSubmitted(true);
-      toast.success("Thank you. I've received your application and will be in touch soon.");
-    } else {
-      toast.error("Something went wrong. Please try again.");
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const result = applicationSchema.safeParse(form);
+    if (!result.success) {
+      const fieldErrors: Partial<Record<keyof FormData, string>> = {};
+      result.error.errors.forEach((err) => {
+        const field = err.path[0] as keyof FormData;
+        fieldErrors[field] = err.message;
+      });
+      setErrors(fieldErrors);
+      return;
     }
-  } catch (error) {
-    toast.error("Network error. Please try again.");
-  }
-};
- 
+    setErrors({});
+    setSubmitted(true);
+    toast.success("Thank you! Your application has been received. Vandana will be in touch soon. üôè");
+  };
 
-  const inputClass = "w-full px-0 py-3 bg-transparent border-0 border-b border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/30 focus:outline-none focus:border-primary-foreground/50 transition-colors font-body";
-  const labelClass = "block text-xs uppercase tracking-[0.2em] text-primary-foreground/60 mb-3 font-body";
+  const update = (field: keyof FormData, value: string) => {
+    setForm((p) => ({ ...p, [field]: value }));
+    if (errors[field]) setErrors((p) => ({ ...p, [field]: undefined }));
+  };
 
   return (
-    <section id="work-with-me" className="relative py-28 overflow-hidden">
+    <section id="work-with-me" className="relative py-24 overflow-hidden">
       <div className="absolute inset-0">
         <img src={healingBg} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-foreground/85" />
+        <div className="absolute inset-0 bg-background/85 backdrop-blur-sm" />
       </div>
 
       <div className="relative z-10 container mx-auto px-4 max-w-2xl">
@@ -89,30 +52,25 @@ Hopes: ${form.hopes}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <p className="text-gold-light/70 text-xs uppercase tracking-[0.3em] mb-8 font-body">
-            Work with me
-          </p>
-          <h2 className="font-heading text-4xl md:text-5xl font-light text-primary-foreground leading-tight mb-6">
-            If you're reading this far,<br />
-            <span className="italic">something in you already knows.</span>
-          </h2>
-          <p className="text-primary-foreground/60 leading-[1.9] max-w-lg mx-auto">
-            This isn't a sales pitch. It's an invitation. If you feel drawn to this work, fill out a short application and I'll be in touch personally.
+          <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground mb-4">Begin Your Healing Journey</h2>
+          <div className="w-20 h-0.5 bg-gold mx-auto mb-6" />
+          <p className="text-muted-foreground leading-relaxed">
+            If you feel called to explore emotional healing in a supportive and compassionate space, you are warmly welcome.
+            <br /><span className="italic">Healing begins with one step of awareness.</span>
           </p>
         </motion.div>
 
         {submitted ? (
           <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-center py-16"
+            className="bg-background/90 backdrop-blur-md rounded-2xl p-12 shadow-healing text-center"
           >
-            <p className="font-heading text-3xl text-primary-foreground mb-4">Thank you.</p>
-            <p className="text-primary-foreground/60 leading-relaxed max-w-md mx-auto">
-              I've received your application. I read every one personally and will reach out to you soon. In the meantime, be gentle with yourself.
-            </p>
+            <p className="text-4xl mb-4">üôè</p>
+            <h3 className="font-heading text-2xl text-foreground mb-3">Application Received</h3>
+            <p className="text-muted-foreground">Thank you for reaching out. Vandana will review your application and get in touch with you soon.</p>
           </motion.div>
         ) : (
           <motion.form
@@ -120,64 +78,71 @@ Hopes: ${form.hopes}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             onSubmit={handleSubmit}
-            className="space-y-8"
+            className="bg-background/90 backdrop-blur-md rounded-2xl p-8 md:p-10 shadow-healing space-y-6"
           >
+            <h3 className="font-heading text-2xl text-foreground text-center mb-2">Work With Me ‚Äî Application</h3>
+
             <div>
-              <label className={labelClass}>Your name</label>
-              <input type="text" value={form.name} onChange={(e) => update("name", e.target.value)} className={inputClass} placeholder="First and last name" />
-              {errors.name && <p className="text-accent text-sm mt-2">{errors.name}</p>}
+              <label className="block text-sm font-semibold text-foreground mb-2">Full Name</label>
+              <input
+                type="text"
+                value={form.name}
+                onChange={(e) => update("name", e.target.value)}
+                className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
+                placeholder="Your name"
+              />
+              {errors.name && <p className="text-destructive text-sm mt-1">{errors.name}</p>}
             </div>
 
             <div>
-              <label className={labelClass}>Email address</label>
-              <input type="email" value={form.email} onChange={(e) => update("email", e.target.value)} className={inputClass} placeholder="your@email.com" />
-              {errors.email && <p className="text-accent text-sm mt-2">{errors.email}</p>}
+              <label className="block text-sm font-semibold text-foreground mb-2">Email Address</label>
+              <input
+                type="email"
+                value={form.email}
+                onChange={(e) => update("email", e.target.value)}
+                className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
+                placeholder="your@email.com"
+              />
+              {errors.email && <p className="text-destructive text-sm mt-1">{errors.email}</p>}
             </div>
 
             <div>
-              <label className={labelClass}>I'm interested in</label>
-              <select value={form.sessionType} onChange={(e) => update("sessionType", e.target.value)} className={`${inputClass} appearance-none cursor-pointer`}>
-                <option value="" className="text-foreground">Choose one...</option>
-                <option value="private" className="text-foreground">Private Healing Session</option>
-                <option value="workshop" className="text-foreground">Upcoming Workshop</option>
-                <option value="both" className="text-foreground">Both — Session & Workshop</option>
-                <option value="unsure" className="text-foreground">I'm not sure yet</option>
-              </select>
-              {errors.sessionType && <p className="text-accent text-sm mt-2">{errors.sessionType}</p>}
-            </div>
-
-            <div>
-              <label className={labelClass}>What emotional pattern would you like support with?</label>
-              <textarea value={form.pattern} onChange={(e) => update("pattern", e.target.value)} rows={3} className={`${inputClass} resize-none`} placeholder="Share as much or as little as feels right..." />
-              {errors.pattern && <p className="text-accent text-sm mt-2">{errors.pattern}</p>}
-            </div>
-
-            <div>
-              <label className={labelClass}>What inspired you to seek healing at this time?</label>
-              <textarea value={form.inspiration} onChange={(e) => update("inspiration", e.target.value)} rows={2} className={`${inputClass} resize-none`} placeholder="Optional — but helpful for me to understand where you are" />
-            </div>
-
-            <div>
-              <label className={labelClass}>Have you tried therapy or healing work before?</label>
-              <textarea value={form.previousWork} onChange={(e) => update("previousWork", e.target.value)} rows={2} className={`${inputClass} resize-none`} placeholder="Optional — there's no right or wrong answer" />
-            </div>
-
-            <div>
-              <label className={labelClass}>What are you hoping to transform?</label>
-              <textarea value={form.hopes} onChange={(e) => update("hopes", e.target.value)} rows={2} className={`${inputClass} resize-none`} placeholder="Optional — even a single word is enough" />
-            </div>
-
-            <div className="pt-4">
-              <button
-                type="submit"
-                className="w-full py-4 border border-primary-foreground/30 text-primary-foreground text-sm uppercase tracking-[0.2em] font-body hover:bg-primary-foreground/10 transition-colors"
+              <label className="block text-sm font-semibold text-foreground mb-2">I'm interested in</label>
+              <select
+                value={form.sessionType}
+                onChange={(e) => update("sessionType", e.target.value)}
+                className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
               >
-                Submit Application
-              </button>
-              <p className="text-center text-xs text-primary-foreground/40 mt-4">
-                Everything you share is held in complete confidence.
-              </p>
+                <option value="">Select a session type</option>
+                <option value="private">Private Healing Session</option>
+                <option value="workshop">Upcoming Workshop</option>
+                <option value="both">Both ‚Äî Session & Workshop</option>
+                <option value="unsure">I'm not sure yet</option>
+              </select>
+              {errors.sessionType && <p className="text-destructive text-sm mt-1">{errors.sessionType}</p>}
             </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-foreground mb-2">
+                What emotional pattern would you like support with?
+              </label>
+              <textarea
+                value={form.pattern}
+                onChange={(e) => update("pattern", e.target.value)}
+                rows={4}
+                className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow resize-none"
+                placeholder="Share as much or as little as you feel comfortable with‚Ä¶"
+              />
+              {errors.pattern && <p className="text-destructive text-sm mt-1">{errors.pattern}</p>}
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:opacity-90 transition-opacity shadow-healing"
+            >
+              Submit Application
+            </button>
+            <p className="text-center text-xs text-muted-foreground">Your information is kept completely confidential.</p>
           </motion.form>
         )}
       </div>
@@ -186,3 +151,4 @@ Hopes: ${form.hopes}
 };
 
 export default WorkWithMeSection;
+
