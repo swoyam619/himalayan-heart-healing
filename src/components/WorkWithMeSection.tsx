@@ -31,8 +31,10 @@ const [errors, setErrors] = useState<Partial<Record<keyof FormDataType, string>>
 const [submitted, setSubmitted] = useState(false);
 
 const update = (field: keyof FormDataType, value: string) => {
-setForm((p) => ({ ...p, [field]: value }));
-if (errors[field]) setErrors((p) => ({ ...p, [field]: undefined }));
+setForm((prev) => ({ ...prev, [field]: value }));
+if (errors[field]) {
+setErrors((prev) => ({ ...prev, [field]: undefined }));
+}
 };
 
 const handleSubmit = async (e: React.FormEvent) => {
@@ -92,15 +94,23 @@ Hopes: ${form.hopes}`
 };
 
 const inputClass =
-"w-full px-0 py-3 bg-transparent border-0 border-b border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/30 focus:outline-none focus:border-primary-foreground/50 transition-colors font-body";
+"w-full px-0 py-3 bg-transparent border-0 border-b border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/40 focus:outline-none focus:border-primary-foreground/60 transition-colors font-body";
 
 const labelClass =
 "block text-xs uppercase tracking-[0.2em] text-primary-foreground/60 mb-3 font-body";
 
-return ( <section id="work-with-me" className="relative py-28 overflow-hidden"> <div className="absolute inset-0"> <img src={healingBg} alt="" className="w-full h-full object-cover" /> <div className="absolute inset-0 bg-foreground/85" /> </div>
+return ( <section id="work-with-me" className="relative py-28 overflow-hidden">
 
 ```
+  {/* Background */}
+  <div className="absolute inset-0">
+    <img src={healingBg} alt="" className="w-full h-full object-cover" />
+    <div className="absolute inset-0 bg-foreground/85 pointer-events-none" />
+  </div>
+
   <div className="relative z-10 container mx-auto px-4 max-w-2xl">
+    
+    {/* Header */}
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -117,47 +127,116 @@ return ( <section id="work-with-me" className="relative py-28 overflow-hidden"> 
       </h2>
 
       <p className="text-primary-foreground/60 leading-[1.9] max-w-lg mx-auto">
-        This isn't a sales pitch. It's an invitation. If you feel drawn to this work, fill out a short application and I'll be in touch personally.
+        This isn't a sales pitch. It's an invitation. If you feel drawn to this work,
+        fill out a short application and I'll be in touch personally.
       </p>
     </motion.div>
 
+    {/* Success */}
     {submitted ? (
       <div className="text-center py-16">
-        <p className="font-heading text-3xl text-primary-foreground mb-4">Thank you.</p>
+        <p className="font-heading text-3xl text-primary-foreground mb-4">
+          Thank you.
+        </p>
         <p className="text-primary-foreground/60">
           I've received your application and will reach out soon.
         </p>
       </div>
     ) : (
+      
+      /* Form */
       <form onSubmit={handleSubmit} className="space-y-8">
 
         <div>
           <label className={labelClass}>Your name</label>
-          <input type="text" value={form.name} onChange={(e) => update("name", e.target.value)} className={inputClass} />
+          <input
+            type="text"
+            placeholder="Your name"
+            value={form.name}
+            onChange={(e) => update("name", e.target.value)}
+            className={inputClass}
+          />
           {errors.name && <p className="text-accent text-sm mt-2">{errors.name}</p>}
         </div>
 
         <div>
           <label className={labelClass}>Email address</label>
-          <input type="email" value={form.email} onChange={(e) => update("email", e.target.value)} className={inputClass} />
+          <input
+            type="email"
+            placeholder="your@email.com"
+            value={form.email}
+            onChange={(e) => update("email", e.target.value)}
+            className={inputClass}
+          />
           {errors.email && <p className="text-accent text-sm mt-2">{errors.email}</p>}
         </div>
 
         <div>
           <label className={labelClass}>I'm interested in</label>
-          <select value={form.sessionType} onChange={(e) => update("sessionType", e.target.value)} className={inputClass}>
+          <select
+            value={form.sessionType}
+            onChange={(e) => update("sessionType", e.target.value)}
+            className={inputClass}
+          >
             <option value="">Choose one...</option>
             <option value="private">Private Session</option>
             <option value="workshop">Workshop</option>
+            <option value="both">Both</option>
           </select>
+          {errors.sessionType && <p className="text-accent text-sm mt-2">{errors.sessionType}</p>}
         </div>
 
         <div>
-          <label className={labelClass}>Emotional pattern</label>
-          <textarea value={form.pattern} onChange={(e) => update("pattern", e.target.value)} className={inputClass} />
+          <label className={labelClass}>
+            What emotional pattern would you like support with?
+          </label>
+          <textarea
+            placeholder="Share as much or as little as feels right..."
+            value={form.pattern}
+            onChange={(e) => update("pattern", e.target.value)}
+            rows={3}
+            className={`${inputClass} resize-none`}
+          />
+          {errors.pattern && <p className="text-accent text-sm mt-2">{errors.pattern}</p>}
         </div>
 
-        <button type="submit" className="w-full py-4 border text-primary-foreground">
+        <div>
+          <label className={labelClass}>What inspired you to seek healing?</label>
+          <textarea
+            placeholder="Optional"
+            value={form.inspiration}
+            onChange={(e) => update("inspiration", e.target.value)}
+            rows={2}
+            className={`${inputClass} resize-none`}
+          />
+        </div>
+
+        <div>
+          <label className={labelClass}>Have you tried healing before?</label>
+          <textarea
+            placeholder="Optional"
+            value={form.previousWork}
+            onChange={(e) => update("previousWork", e.target.value)}
+            rows={2}
+            className={`${inputClass} resize-none`}
+          />
+        </div>
+
+        <div>
+          <label className={labelClass}>What would you like to transform?</label>
+          <textarea
+            placeholder="Optional"
+            value={form.hopes}
+            onChange={(e) => update("hopes", e.target.value)}
+            rows={2}
+            className={`${inputClass} resize-none`}
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full py-4 border border-primary-foreground/30 text-primary-foreground text-sm uppercase tracking-[0.2em] hover:bg-primary-foreground/10 transition"
+        >
           Submit Application
         </button>
 
