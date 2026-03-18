@@ -48,8 +48,16 @@ const TestimonialsSection = () => (
             transition={{ delay: i * 0.12 }}
             className={`bg-card p-10 rounded-sm border border-border ${i === 1 ? "md:-mt-8" : ""}`}
           >
+            <div className="flex gap-0.5 mb-4">
+              {Array.from({ length: 5 }, (_, s) => (
+                <span key={s} className={`text-sm ${s < Math.floor(t.stars) ? "text-gold" : s < t.stars ? "text-gold" : "text-border"}`}>
+                  {s < Math.floor(t.stars) ? "★" : s < t.stars ? "✬" : "★"}
+                </span>
+              ))}
+            </div>
             <p className="text-muted-foreground leading-[1.9] mb-8 italic">"{t.text}"</p>
-            <p className="text-foreground text-sm font-body tracking-wide">— {t.name}</p>
+            <p className="text-foreground text-sm font-body font-semibold">{t.name}</p>
+            {t.location && <p className="text-muted-foreground text-xs mt-1">{t.location}</p>}
           </motion.div>
         ))}
       </div>
