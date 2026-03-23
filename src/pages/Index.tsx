@@ -10,6 +10,7 @@ import TransformationSection from "@/components/TransformationSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import WorkWithMeSection from "@/components/WorkWithMeSection";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => (
   <div className="min-h-screen bg-background">
@@ -25,6 +26,7 @@ const Index = () => (
     <TestimonialsSection />
     <WorkWithMeSection />
     <Footer />
+    <WhatsAppButton />
   </div>
 );
 
