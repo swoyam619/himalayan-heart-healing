@@ -1,4 +1,4 @@
-import { Instagram, Mail } from "lucide-react";
+import { Instagram, Mail, Phone } from "lucide-react";
 import logoBanner from "@/assets/logo-banner.png";
 
 const Footer = () => (
@@ -18,6 +18,10 @@ const Footer = () => (
           </p>
 
           <div className="space-y-3">
+            <a href="https://wa.me/919930343807" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-primary-foreground/50 hover:text-primary-foreground/80 transition-colors text-sm">
+              <Phone size={16} />
+              +91 9930343807 (WhatsApp)
+            </a>
             <a href="https://instagram.com/danphehealing" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-primary-foreground/50 hover:text-primary-foreground/80 transition-colors text-sm">
               <Instagram size={16} />
               @danphehealing
