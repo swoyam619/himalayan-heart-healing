@@ -17,8 +17,9 @@ const WorkWithMeSection = () => {
   const [form, setForm] = useState<FormData>({ name: "", email: "", pattern: "", sessionType: "" });
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = applicationSchema.safeParse(form);
     if (!result.success) {
@@ -31,8 +32,26 @@ const WorkWithMeSection = () => {
       return;
     }
     setErrors({});
-    setSubmitted(true);
-    toast.success("Thank you! Your application has been received. Vandana will be in touch soon. üôè");
+    setSubmitting(true);
+    try {
+      const res = await fetch("https://formspree.io/f/xaqpalqz", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          sessionType: form.sessionType,
+          message: form.pattern,
+        }),
+      });
+      if (!res.ok) throw new Error("Failed to submit");
+      setSubmitted(true);
+      toast.success("Thank you! Your application has been received. Vandana will be in touch soon. 🙏");
+    } catch {
+      toast.error("Something went wrong. Please try again or email vandanasoulstar@gmail.com directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const update = (field: keyof FormData, value: string) => {
@@ -68,7 +87,7 @@ const WorkWithMeSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             className="bg-background/90 backdrop-blur-md rounded-2xl p-12 shadow-healing text-center"
           >
-            <p className="text-4xl mb-4">üôè</p>
+            <p className="text-4xl mb-4">🙏</p>
             <h3 className="font-heading text-2xl text-foreground mb-3">Application Received</h3>
             <p className="text-muted-foreground">Thank you for reaching out. Vandana will review your application and get in touch with you soon.</p>
           </motion.div>
@@ -80,12 +99,13 @@ const WorkWithMeSection = () => {
             onSubmit={handleSubmit}
             className="bg-background/90 backdrop-blur-md rounded-2xl p-8 md:p-10 shadow-healing space-y-6"
           >
-            <h3 className="font-heading text-2xl text-foreground text-center mb-2">Work With Me ‚Äî Application</h3>
+            <h3 className="font-heading text-2xl text-foreground text-center mb-2">Work With Me — Application</h3>
 
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">Full Name</label>
               <input
                 type="text"
+                name="name"
                 value={form.name}
                 onChange={(e) => update("name", e.target.value)}
                 className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
@@ -98,6 +118,7 @@ const WorkWithMeSection = () => {
               <label className="block text-sm font-semibold text-foreground mb-2">Email Address</label>
               <input
                 type="email"
+                name="email"
                 value={form.email}
                 onChange={(e) => update("email", e.target.value)}
                 className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
@@ -109,15 +130,16 @@ const WorkWithMeSection = () => {
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">I'm interested in</label>
               <select
+                name="sessionType"
                 value={form.sessionType}
                 onChange={(e) => update("sessionType", e.target.value)}
                 className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
               >
                 <option value="">Select a session type</option>
-                <option value="private">Private Healing Session</option>
-                <option value="workshop">Upcoming Workshop</option>
-                <option value="both">Both ‚Äî Session & Workshop</option>
-                <option value="unsure">I'm not sure yet</option>
+                <option value="Private Healing Session">Private Healing Session</option>
+                <option value="Upcoming Workshop">Upcoming Workshop</option>
+                <option value="Both — Session & Workshop">Both — Session & Workshop</option>
+                <option value="I'm not sure yet">I'm not sure yet</option>
               </select>
               {errors.sessionType && <p className="text-destructive text-sm mt-1">{errors.sessionType}</p>}
             </div>
@@ -127,20 +149,22 @@ const WorkWithMeSection = () => {
                 What emotional pattern would you like support with?
               </label>
               <textarea
+                name="message"
                 value={form.pattern}
                 onChange={(e) => update("pattern", e.target.value)}
                 rows={4}
                 className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow resize-none"
-                placeholder="Share as much or as little as you feel comfortable with‚Ä¶"
+                placeholder="Share as much or as little as you feel comfortable with…"
               />
               {errors.pattern && <p className="text-destructive text-sm mt-1">{errors.pattern}</p>}
             </div>
 
             <button
               type="submit"
-              className="w-full py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:opacity-90 transition-opacity shadow-healing"
+              disabled={submitting}
+              className="w-full py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base hover:opacity-90 transition-opacity shadow-healing disabled:opacity-60"
             >
-              Submit Application
+              {submitting ? "Submitting…" : "Submit Application"}
             </button>
             <p className="text-center text-xs text-muted-foreground">Your information is kept completely confidential.</p>
           </motion.form>
@@ -151,4 +175,3 @@ const WorkWithMeSection = () => {
 };
 
 export default WorkWithMeSection;
-
