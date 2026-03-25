@@ -14,30 +14,30 @@ const ServicesSection = () => (
             What I offer
           </p>
           <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground leading-tight mb-6">
-            Spaces that <span className="italic">hold</span> you.
+            Simple, gentle <span className="italic">healing.</span>
           </h2>
           <p className="text-muted-foreground leading-[1.9]">
-            Whether you come for one session or walk this path over months, every space I create is rooted in the same intention: for you to feel safe enough to be honest about what you're carrying.
+            Whether it's one session or a longer journey, every session is designed to help you feel lighter, calmer, and more like yourself.
           </p>
         </motion.div>
 
         <div className="lg:col-span-7 space-y-6">
           {[
             {
-              title: "Private Healing Sessions",
-              text: "One-to-one sessions where we work with whatever is most present for you — old wounds, emotional patterns, relationship dynamics, self-worth, grief. There's no formula. Just presence, care, and intuitive guidance.",
+              title: "1:1 Healing Sessions",
+              text: "Private sessions focused on whatever you're going through — anxiety, pain, relationship issues, self-doubt. No formula. Just real, caring support.",
             },
             {
               title: "Energy Healing",
-              text: "For when words aren't enough. These sessions work at the energetic level to release what's stuck, soften what's guarded, and restore a sense of flow. You don't need to understand it intellectually to feel the difference.",
+              text: "When words aren't enough, energy healing works on a deeper level. It helps release what's stuck and brings back a sense of calm and balance.",
             },
             {
-              title: "Emotional Guidance",
-              text: "Ongoing support for people navigating emotional transitions, difficult relationships, or the messy middle of personal transformation. Think of it as having someone who truly sees you in your corner.",
+              title: "Emotional Support",
+              text: "Ongoing guidance for people going through tough times — difficult relationships, life changes, or just feeling lost. Think of it as having someone who truly understands in your corner.",
             },
             {
-              title: "Healing Workshops",
-              text: "Small group experiences focused on emotional awareness, inner child work, and collective healing. There is something powerful about being witnessed by others who understand — without judgment, without advice.",
+              title: "Group Healing Sessions",
+              text: "Small group experiences focused on emotional awareness and collective support. There's something powerful about healing alongside others who understand.",
             },
           ].map((s, i) => (
             <motion.div
