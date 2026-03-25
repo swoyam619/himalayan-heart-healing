@@ -2,36 +2,32 @@ import { motion } from "framer-motion";
 
 const techniques = [
   {
-    title: "Inner Child Therapy",
-    description: "Going back — gently — to the moments where you first learned to hide, perform, or disconnect. Not to relive pain, but to offer your younger self the safety and understanding they didn't receive.",
+    title: "Healing through Inner Light",
+    description: "Works at a deep level to change negative beliefs and emotional patterns that your conscious mind can't seem to fix.",
   },
   {
-    title: "Shadow Therapy",
-    description: "The parts of you that were shamed, denied, or pushed underground don't disappear. They run your life from the shadows. This work brings them into the light — not to fix them, but to welcome them home.",
-  },
-  {
-    title: "Theta Healing",
-    description: "Working at the subconscious level to shift beliefs and emotional imprints that your conscious mind can't seem to reach. The kind of patterns that make you say, 'I know this isn't rational, but I can't stop feeling it.'",
-  },
-  {
-    title: "EFT — Emotional Freedom Technique",
-    description: "A body-based practice that uses gentle tapping to calm your nervous system and soften the emotional charge around memories, fears, and triggers. Simple, but often surprisingly powerful.",
-  },
-  {
-    title: "Ho'oponopono",
-    description: "An ancient Hawaiian practice of reconciliation and forgiveness. It works with four simple phrases to release the weight of resentment, guilt, and emotional debt — sometimes from patterns you didn't even know you were carrying.",
+    title: "EFT — Tapping",
+    description: "A simple tapping technique that calms your nervous system and reduces the emotional weight of painful memories and fears.",
   },
   {
     title: "Chakra Healing",
-    description: "When emotions get stuck, they live in the body. Chakra work helps restore flow to the places where grief, fear, shame, or disconnection have created heaviness or numbness.",
+    description: "When emotions get stuck, they show up in the body. Chakra healing restores balance and helps release sadness, fear, and tension.",
+  },
+  {
+    title: "Ho'oponopono",
+    description: "A Hawaiian practice of forgiveness. Four simple phrases help release resentment, guilt, and emotional baggage.",
   },
   {
     title: "Akashic Records",
-    description: "A way of accessing deeper soul-level patterns — the recurring themes, lessons, and emotional signatures that keep showing up across different chapters of your life.",
+    description: "A way to understand recurring patterns in your life — the themes and lessons that keep showing up.",
   },
   {
-    title: "Bach Flower Remedy & Supportive Tools",
-    description: "Gentle, plant-based support for emotional states. Alongside tools like Vedic switch-words and Mokshapatta, these offer quiet, continuous support between sessions.",
+    title: "Vedic Switch Words",
+    description: "Specific words with powerful vibrations that help shift your energy, attract positivity, and support emotional healing between sessions.",
+  },
+  {
+    title: "Bach Flower Remedies",
+    description: "Gentle, natural plant-based support for emotional states like anxiety, sadness, fear, and overwhelm.",
   },
 ];
 
@@ -45,11 +41,11 @@ const TechniquesSection = () => (
         className="mb-16"
       >
         <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 font-body">
-          The tools I work with
+          Methods I use
         </p>
         <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground leading-tight max-w-2xl">
-          No single modality heals everything.<br />
-          <span className="italic">That's why I don't use just one.</span>
+          Different problems need<br />
+          <span className="italic">different solutions.</span>
         </h2>
       </motion.div>
 
@@ -81,7 +77,7 @@ const TechniquesSection = () => (
         viewport={{ once: true }}
         className="mt-16 font-heading text-xl text-foreground italic text-center max-w-2xl mx-auto"
       >
-        I don't choose techniques in advance. I listen to what's present in you and let the session unfold from there.
+        I pick the right method based on what you need. Every session is unique.
       </motion.p>
     </div>
   </section>

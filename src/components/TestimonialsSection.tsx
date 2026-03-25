@@ -2,19 +2,19 @@ import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    text: "Vandana is doing an incredible job with her techniques. Each session felt purposeful and grounded — she knows exactly how to hold space while guiding you through what needs to surface. I felt real shifts, not just temporary relief.",
+    text: "Vandana's sessions are amazing. Each one felt purposeful and grounding. I felt real, lasting changes — not just temporary relief.",
     name: "Swoyam Banskota",
     location: "Nepal",
     stars: 4.5,
   },
   {
-    text: "I came to Vandana feeling lost and disconnected from myself. Through her work, I found layers of my own depth I didn't know existed. She helped me reconnect with parts of me I had buried for years. I finally feel like I know who I am again.",
+    text: "I came feeling lost and disconnected. Through her work, I found parts of myself I'd forgotten. I finally feel like myself again.",
     name: "Sudha Bhattarai",
     location: "Goa, India",
     stars: 5,
   },
   {
-    text: "What I loved most about working with Vandana is how unique her techniques are. It's not the same thing you find everywhere — she brings something deeply personal and intuitive to every session. I've never experienced healing quite like this before.",
+    text: "Her techniques are unique and deeply personal. I've never experienced anything like it. Every session felt different and exactly what I needed.",
     name: "Sweta Mishra",
     location: "",
     stars: 5,
@@ -31,10 +31,10 @@ const TestimonialsSection = () => (
         className="text-center mb-20"
       >
         <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 font-body">
-          In their words
+          What people say
         </p>
         <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground">
-          What it feels like <span className="italic">after</span>
+          Real stories, <span className="italic">real results</span>
         </h2>
       </motion.div>
 

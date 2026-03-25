@@ -20,23 +20,23 @@ const ApproachSection = () => (
         </p>
 
         <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-light text-primary-foreground leading-tight mb-10">
-          Healing isn't about <span className="italic">erasing</span> the past.<br />
-          It's about no longer letting it <span className="italic">run</span> you.
+          Healing isn't about <span className="italic">forgetting</span> the past.<br />
+          It's about <span className="italic">freeing</span> yourself from it.
         </h2>
 
         <div className="max-w-2xl mx-auto space-y-6 text-primary-foreground/75 text-lg leading-[1.9]">
           <p>
-            My sessions are not scripted or rushed. There is no pressure to perform vulnerability or hit milestones. We go where your system is ready to go — no sooner, no further.
+            Every session is different. There's no script or pressure. We go at your pace — gently and safely.
           </p>
           <p>
-            I draw from breathwork, somatic awareness, energy healing, and emotional inquiry. But the real medicine is the space itself — the permission to feel what you actually feel without needing to explain, justify, or minimize it.
+            I use a mix of energy healing, breathwork, and emotional support techniques. But the real power is in the safe space itself — where you can feel what you feel without judgment.
           </p>
         </div>
 
         <div className="lotus-divider mt-12 mb-10" style={{ color: "hsl(var(--gold-light))" }} />
 
         <p className="text-primary-foreground/60 italic font-heading text-xl max-w-xl mx-auto">
-          Each session is intuitively shaped around what's most alive in you — not what I think should happen.
+          Each session is shaped around what you need — not a fixed formula.
         </p>
       </motion.div>
     </div>

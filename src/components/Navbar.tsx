@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-indeera.png";
 
 const navLinks = [
-  { label: "About Vandana", href: "#about" },
-  { label: "Healing", href: "#healing" },
+  { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Readings", href: "#readings" },
   { label: "Modalities", href: "#modalities" },
   { label: "Connect", href: "#contact" },
 ];
@@ -17,8 +18,8 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-md">
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
         <a href="#home" className="flex items-center gap-3">
-          <img src={logo} alt="Danphe Healing" className="h-12 w-12 rounded-full object-cover" />
-          <span className="font-heading text-xl text-foreground tracking-wide">Danphe Healing</span>
+          <img src={logo} alt="Indeera Healing" className="h-12 w-12 rounded-full object-cover" />
+          <span className="font-heading text-xl text-foreground tracking-wide">Indeera Healing</span>
         </a>
 
         <div className="hidden md:flex items-center gap-10">

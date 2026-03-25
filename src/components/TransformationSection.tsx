@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 
 const outcomes = [
-  "They stop reacting from old pain and start responding from presence",
-  "The guilt around saying 'no' begins to dissolve",
-  "They feel emotions without being consumed by them",
-  "Relationships become less triggering and more honest",
-  "They reconnect with a part of themselves they thought they'd lost",
+  "They stop reacting from old pain and start responding calmly",
+  "The guilt around saying 'no' starts to fade",
+  "They feel emotions without being overwhelmed by them",
+  "Relationships become healthier and more honest",
+  "They reconnect with confidence and self-worth",
 ];
 
 const TransformationSection = () => (
@@ -18,11 +18,11 @@ const TransformationSection = () => (
         className="text-center mb-16"
       >
         <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 font-body">
-          What shifts look like
+          Real results
         </p>
         <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground leading-tight">
-          I won't promise you a <span className="italic">transformation.</span><br />
-          But I'll tell you what people notice.
+          What people <span className="italic">notice</span><br />
+          after working with me.
         </h2>
       </motion.div>
 
@@ -49,7 +49,7 @@ const TransformationSection = () => (
         className="mt-16 text-center"
       >
         <p className="font-heading text-xl text-muted-foreground italic">
-          Healing is rarely linear. But when the shifts come, they are unmistakable.
+          Change doesn't happen overnight. But when it comes, you'll feel the difference.
         </p>
       </motion.div>
     </div>

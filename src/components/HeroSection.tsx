@@ -4,7 +4,7 @@ import heroImg from "@/assets/hero-mountains.jpg";
 const HeroSection = () => (
   <section id="home" className="relative min-h-screen flex items-end overflow-hidden">
     <div className="absolute inset-0">
-      <img src={heroImg} alt="Himalayan mountains at golden hour" className="w-full h-full object-cover" />
+      <img src={heroImg} alt="Peaceful mountain landscape" className="w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/30 to-foreground/10" />
     </div>
 
@@ -16,7 +16,7 @@ const HeroSection = () => (
           transition={{ duration: 1.2, delay: 0.3 }}
           className="text-gold-light text-xs uppercase tracking-[0.35em] mb-8 font-body"
         >
-          Danphe Healing — Rooted with Himalayan Love
+          Indeera Healing
         </motion.p>
 
         <motion.h1
@@ -25,9 +25,9 @@ const HeroSection = () => (
           transition={{ duration: 1, delay: 0.6 }}
           className="font-heading text-5xl md:text-7xl lg:text-8xl font-light text-primary-foreground leading-[1.1] mb-8"
         >
-          Some wounds <br />
-          <span className="italic">don't need fixing.</span><br />
-          They need <span className="text-gold-light italic">witnessing.</span>
+          You deserve to<br />
+          <span className="italic">feel better.</span><br />
+          Let's <span className="text-gold-light italic">begin.</span>
         </motion.h1>
 
         <motion.p
@@ -36,7 +36,7 @@ const HeroSection = () => (
           transition={{ duration: 1, delay: 1 }}
           className="text-primary-foreground/70 text-lg md:text-xl max-w-lg font-light leading-relaxed mb-12"
         >
-          A gentle space for emotional healing, inner child work, and rediscovering the parts of yourself you learned to hide.
+          Gentle healing for anxiety, pain, low confidence, and emotional struggles. No jargon. Just real support.
         </motion.p>
 
         <motion.div
@@ -48,7 +48,7 @@ const HeroSection = () => (
             href="#work-with-me"
             className="inline-block px-8 py-4 border border-primary-foreground/30 text-primary-foreground text-sm tracking-widest uppercase font-body hover:bg-primary-foreground/10 transition-colors"
           >
-            Begin Your Journey
+            Get Started
           </a>
         </motion.div>
       </div>
